@@ -31,7 +31,7 @@ const UserModel = {
   },
 
   async count() {
-    const [rows] = await pool.query('SELECT COUNT(*) AS total FROM users WHERE role = "customer"');
+        const [rows] = await pool.query('SELECT COUNT(*) AS total FROM users WHERE role = ?', ['customer']);
     return rows[0].total;
   },
 };

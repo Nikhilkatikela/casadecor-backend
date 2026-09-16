@@ -15,7 +15,7 @@ async function seedAdmin() {
   const [existing] = await pool.query('SELECT id FROM users WHERE email = ?', [email]);
 
   if (existing.length) {
-    await pool.query('UPDATE users SET password = ?, role = "admin" WHERE email = ?', [hashed, email]);
+        await pool.query('UPDATE users SET password = ?, role = ? WHERE email = ?', [hashed, 'admin', email]);
     console.log(`✅ Updated existing admin account: ${email}`);
   } else {
     await pool.query(
